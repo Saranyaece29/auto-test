@@ -21,14 +21,8 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 # COPY app.yaml .
 
-COPY ./src /code/src
-
-COPY ./.env* /code/.env*
-
-COPY ./diagrams_and_docs /code/diagrams_and_docs
-COPY ./tests /code/tests
-COPY ./test_load /code/test_load
-COPY ./test_newman /code/test_newman
+# Copy the entire repository; safer for CI when optional folders are absent
+COPY . /code
 
 EXPOSE 8001
 
