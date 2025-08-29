@@ -1,14 +1,5 @@
 FROM python:3.11
 
-# Instala bash y Azure CLI
-RUN apt-get update && \
-    apt-get install -y curl apt-transport-https lsb-release gnupg && \
-    curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /etc/apt/trusted.gpg.d/microsoft.asc.gpg && \
-    AZ_REPO=$(lsb_release -cs) && \
-    echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" > /etc/apt/sources.list.d/azure-cli.list && \
-    apt-get update && \
-    apt-get install -y azure-cli
-
 WORKDIR /code
 
 # Upgrade pip

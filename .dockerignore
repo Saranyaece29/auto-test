@@ -1,0 +1,32 @@
+# VCS
+.git
+.gitignore
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Envs
+.env
+.env.*
+
+# OS/IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Node / misc
+node_modules/
+
+# Large artifacts
+*.log
+*.sqlite3
+*.db
+*.tar
+*.tar.gz
+*.zip
