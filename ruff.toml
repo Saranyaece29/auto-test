@@ -1,0 +1,10 @@
+line-length = 120
+target-version = "py311"
+
+[lint]
+select = ["E", "F", "I"]
+fix = false
+
+[lint.per-file-ignores]
+# Tests often include exploratory code, duplicated fixtures, and unused imports.
+"tests/**/*.py" = ["F401", "F841", "F811", "E401"]
