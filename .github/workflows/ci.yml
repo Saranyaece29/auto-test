@@ -44,4 +44,4 @@ jobs:
         run: docker build -t fido-api-ci .
 
       - name: Run tests
-        run: docker run --rm fido-api-ci sh -lc 'pytest --maxfail=1 --disable-warnings -q -k "not tests_portal"'
+        run: docker run --rm fido-api-ci sh -lc 'pytest --maxfail=1 --disable-warnings -q --ignore=tests/tests_portal'
