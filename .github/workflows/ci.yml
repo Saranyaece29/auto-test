@@ -54,3 +54,33 @@ jobs:
               exit "${code:-0}";
             fi
           '
+
+  sanity:
+    name: Sanity (Playwright)
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pytest and Playwright
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest playwright
+
+      - name: Install Playwright browsers and OS deps
+        run: |
+          python -m playwright install --with-deps chromium
+
+      - name: Run sanity suite (headless)
+        env:
+          HEADLESS: 'true'
+          APP_EMAIL: ${{ secrets.APP_EMAIL }}
+          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+        run: |
+          pytest -q tests/tests_portal/sanity_suite
