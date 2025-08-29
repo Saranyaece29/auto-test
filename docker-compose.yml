@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  api:
+    build: ./
+    image: myimage
+    command:  uvicorn src.main:app --reload --workers 1 --host 0.0.0.0 --port 8001
+    ports:
+      - 8001:8001
+    networks:
+      - test_network
+    environment:
+      - AZURE_CLIENT_ID=290a7a10-5a44-4ce7-a7a7-d804ae0191cc
+      - AZURE_CLIENT_SECRET=76f70ab2-362f-43c9-a3a4-3f3d639eeeb3
+      - AZURE_TENANT_ID=06aa60e2-3080-48e4-8c10-607d7e071b38
+
+networks:
+  test_network:
+    driver: bridge

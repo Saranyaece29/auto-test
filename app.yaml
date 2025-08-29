@@ -1,0 +1,62 @@
+runtime: python38
+entrypoint: gunicorn -w 4 -k uvicorn.workers.UvicornWorker src.main:app
+instance_class: F4_1G
+env_variables:
+  SECURITY_ENABLED: "True"
+
+  DEBUG_FLAG: "False"
+  GCP_REAL_FLAG: "False"
+
+  # DATABASE CONFIGURATION
+  DB_ENGINE: "mysql+pymysql"
+  DB_CONNECTION_NAME: "/cloudsql/fidoai:europe-west2:fido-1"
+  DB_USER: "fidoapi"
+  DB_PASSWORD: "#:A2}Fs<yooAYmGT"
+  DB_NAME: "fido1"
+  DB_HOST: "35.246.113.233"
+  DB_PORT: "3306"
+
+  # STAGING DATABASE CONFIGURATION
+  DB_ENGINE_STAGE: "mysql+pymysql"
+  DB_CONNECTION_NAME_STAGE: "/cloudsql/fidoai:europe-west2:fido-1-stage"
+  DB_USER_STAGE: "fidoapi"
+  DB_PASSWORD_STAGE: "#:A2}Fs<yooAYmGT"
+  DB_NAME_STAGE: "fido1"
+  DB_HOST_STAGE: "34.105.176.61"
+  DB_PORT_STAGE: "3306"
+
+  # FAKE DATABASE CONFIGURATION
+  DB_ENGINE_FAKE: "mysql+pymysql"
+  DB_CONNECTION_NAME_FAKE: "/cloudsql/fidoai:europe-west2:fido-1-replica"
+  DB_USER_FAKE: "fidoapi"
+  DB_PASSWORD_FAKE: "#:A2}Fs<yooAYmGT"
+  DB_NAME_FAKE: "fido1"
+  DB_HOST_FAKE: "34.142.29.191"
+  DB_PORT_FAKE: "3306"
+
+  GCP_FLAG: "True"
+
+  # temporary location
+  TEMP_PATH: "/tmp/"
+
+  SENDGRID_API_KEY: "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"
+
+  # to get a string like this run:
+  # openssl rand -hex 32
+  SECRET_KEY: "acab28e164fb524b07ef794c61b9b133d18c48b1df0ec80a5f4d29d6b8f50fe3"
+  ALGORITHM: "HS256"
+  ACCESS_TOKEN_EXPIRE_HOURS: 48
+
+  POSTMARK_API_KEY: "18d1f193-d916-47c3-a7ec-4bfae3e0e0fc"
+
+  TOKEN_SEVENPRO: "gc8OEn6tHZ0ifEHRLEz08FwPdjJW93WP"
+  TOKEN_FIDO: "wzb6sh-5dUcew8LrHdhaU9qMyjFNw9Pd"
+
+  # DATABASE FIDOMESH CONFIGURATION
+  DB_ENGINE_MESH: "mysql+pymysql"
+  DB_CONNECTION_NAME_MESH: "/cloudsql/fidoai:europe-west2:fido-mesh"
+  DB_USER_MESH: "root"
+  DB_PASSWORD_MESH: "(:=SNDh]Fd%P'J#n"
+  DB_NAME_MESH: "client_data"
+  DB_HOST_MESH: "35.234.157.162"
+  DB_PORT_MESH: "3306"
